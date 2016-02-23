@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask
-from flask import render_template
+from applib import dbStore
+from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
@@ -12,7 +12,7 @@ def hello_world(name=None):
 
 @app.route('/accounting')
 def accounting():
-    return "accounting"
+    return render_template('Accounting.html', listtest=["ccQ", "handsome"])
 
 if __name__ == '__main__':
     app.run()
