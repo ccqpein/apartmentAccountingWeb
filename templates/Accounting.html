@@ -1,17 +1,23 @@
 <head>
-  <title>
-    Accounting page
-  </title>
+  <title>Accounting page</title>
 </head>
 
 <body>
 
-  <h1>
-    its accouting page
-  </h1>
+  <h1>Its accouting page</h1>
 
-  <ol>
-    <li>First name:{{listtest[0]}} </li>
-    <li>Last name: {{listtest[1]}}</li>
-    </ol>
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+
+    <tr>
+    {% for item in listtest %}
+    <td>{{item}}</td>
+    {% endfor %}
+    </tr>
+
+  </table>
+  
 </body>
