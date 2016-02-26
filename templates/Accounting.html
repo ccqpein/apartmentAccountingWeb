@@ -21,6 +21,13 @@
     {% endfor %}
     </tr>
 
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      {{ form.name.label  }} {{ form.name() }}
+      {{ form.price.label }} {{ form.price() }}
+      {{ form.submit() }}
+    </form>
+
   </table>
-  
+
 </body>

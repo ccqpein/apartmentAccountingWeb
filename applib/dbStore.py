@@ -4,7 +4,7 @@
 import sys
 import os
 import sqlite3
-from time import gmtime, strftime
+from time import localtime, strftime
 
 
 if os.path.exists(sys.path[0] + "/accoutingRecords.db"):
@@ -34,18 +34,19 @@ def doSqlDec(fun):
     return _first
 
 
-@doSqlDec
+#@doSqlDec
 def add_sql(*args):
     # first element is id, second is name, third is price number
+    print(args)
     strr = '''insert into accountingList values("{id}", "{objectname}", "{objectprice}", "{objectDate}");'''\
            .format(id=args[0],
                    objectname=args[1],
                    objectprice=args[2],
-                   objectDate=strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+                   objectDate=strftime("%Y-%m-%d", localtime()))
     return strr
 
 
-@doSqlDec
+#@doSqlDec
 def query_sql(num=None):
     # query recently {num} data from db
     if num:
