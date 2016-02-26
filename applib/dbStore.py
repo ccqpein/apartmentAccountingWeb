@@ -4,6 +4,7 @@
 import sys
 import os
 import sqlite3
+from time import gmtime, strftime
 
 
 if os.path.exists(sys.path[0] + "/accoutingRecords.db"):
@@ -15,6 +16,7 @@ else:
         conn.execute('''create table accountingList (stuff_id int(77) not null,
                         object_Name varchar(77) not null,
                         object_Price float(77) not null,
+                        object_Date DATETIME not null,
                         primary key (stuff_id));''')
 
 
@@ -35,8 +37,11 @@ def doSqlDec(fun):
 @doSqlDec
 def add_sql(*args):
     # first element is id, second is name, third is price number
-    strr = '''insert into accountingList values("{id}", "{objectname}", "{objectprice}");'''\
-           .format(id=args[0], objectname=args[1], objectprice=args[2])
+    strr = '''insert into accountingList values("{id}", "{objectname}", "{objectprice}", "{objectDate}");'''\
+           .format(id=args[0],
+                   objectname=args[1],
+                   objectprice=args[2],
+                   objectDate=strftime("%Y-%m-%d %H:%M:%S", gmtime()))
     return strr
 
 

@@ -11,8 +11,8 @@ def hello_world(name=None):
 
 
 @app.route('/accounting')
-def accounting():
-    return render_template('Accounting.html', listtest=["ccQ", "handsome"])
+def accounting(num=10):
+    return render_template('Accounting.html', DBresult=dbStore.query_sql(num))
 
 if __name__ == '__main__':
     app.run()
