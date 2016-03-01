@@ -10,6 +10,7 @@ from time import localtime, strftime
 if os.path.exists(sys.path[0] + "/accoutingRecords.db"):
     dataDir = sys.path[0] + '/accoutingRecords.db'
     conn = sqlite3.connect(dataDir)
+    conn.close()
 else:
     sqlite3.connect(sys.path[0] + '/accoutingRecords.db')
     conn = sqlite3.connect(sys.path[0] + '/accoutingRecords.db')
@@ -21,7 +22,7 @@ else:
                         primary key (stuff_id));''')
 
 
-def do_sql(strr):
+def do_sql(strr, conn):
     with conn:
         cur = conn.execute(strr)
     return cur

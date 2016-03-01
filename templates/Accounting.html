@@ -13,14 +13,14 @@
       <th>Date</th>
     </tr>
 
-    <tr>
     {% for item in DBresult %}
+    <tr>
     <td>{{item[1]}}</td>
     <td>{{item[2]}}</td>
     <td>{{item[3]}}</td>
-    {% endfor %}
     </tr>
-
+    {% endfor %}
+    
     <form method="POST">
       {{ form.hidden_tag() }}
       {{ form.name.label  }} {{ form.name() }}
