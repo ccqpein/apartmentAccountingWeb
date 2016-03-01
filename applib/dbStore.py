@@ -8,7 +8,8 @@ from time import localtime, strftime
 
 
 if os.path.exists(sys.path[0] + "/accoutingRecords.db"):
-    conn = sqlite3.connect(sys.path[0] + '/accoutingRecords.db')
+    dataDir = sys.path[0] + '/accoutingRecords.db'
+    conn = sqlite3.connect(dataDir)
 else:
     sqlite3.connect(sys.path[0] + '/accoutingRecords.db')
     conn = sqlite3.connect(sys.path[0] + '/accoutingRecords.db')
