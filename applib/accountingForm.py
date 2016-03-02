@@ -6,4 +6,4 @@ from wtforms import StringField, SubmitField
 class SubmitRecordForm(Form):
     name = StringField("Name", validators=[Required()])
     price = StringField("Price", validators=[Required()])
-    submit = SubmitField('ubmit')
+    submit = SubmitField('Submit')

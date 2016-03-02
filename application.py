@@ -43,7 +43,9 @@ def accounting():
     if form.validate_on_submit():
         newName = form.name.data
         newPrice = form.price.data
-        testid = 11
+        testid = list(
+            do_sql("""select count(*) from accountingList;"""))[0][0] + 1
+        print(testid)
         do_sql(_db.add_sql(testid, newName, newPrice))
 
         form.name.data, form.price.data = "", ""
