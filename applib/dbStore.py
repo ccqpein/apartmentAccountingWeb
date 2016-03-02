@@ -12,6 +12,7 @@ if os.path.exists(sys.path[0] + "/accoutingRecords.db"):
 #    conn = sqlite3.connect(dataDir)
 #    conn.close()
 else:
+    dataDir = sys.path[0] + '/accoutingRecords.db'
     sqlite3.connect(sys.path[0] + '/accoutingRecords.db')
     conn = sqlite3.connect(sys.path[0] + '/accoutingRecords.db')
     with conn:
