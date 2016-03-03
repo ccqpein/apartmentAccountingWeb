@@ -35,24 +35,34 @@ def index():
 
 
 @app.route('/accounting', methods=["GET", "POST"])
-def accounting():
-    num = 10
+@app.route('/accounting/<num>', methods=["GET", "POST"])
+def accounting(num=10):
+    #    num = 10
     form = _ac.SubmitRecordForm()
+    query_form = _ac.SubmitRecordForm()
     DBresult = list(do_sql(_db.query_sql(num)))
 
     if form.validate_on_submit():
         newName = form.name.data
         newPrice = form.price.data
-        testid = list(
+        newid = list(
             do_sql("""select count(*) from accountingList;"""))[0][0] + 1
-        print(testid)
-        do_sql(_db.add_sql(testid, newName, newPrice))
+        do_sql(_db.add_sql(newid, newName, newPrice))
 
         form.name.data, form.price.data = "", ""
-        return redirect(url_for("accounting"))
-    print(list(DBresult))
+        print("fuck")
+        return redirect(url_for("accounting", num=num))
+
+    if query_form.validate_on_submit():
+        showNum = list(
+            do_sql("""select count(*) from accountingList;"""))[0][0]
+        print(showNum)
+        return redirect(url_for("accounting", num=showNum))
+
+#    print(list(DBresult))
     return render_template('Accounting.html',
                            form=form,
+                           query_form=query_form,
                            DBresult=DBresult)
 
 
@@ -63,4 +73,4 @@ def teardown_request(exception):
 
 if __name__ == '__main__':
     app.debug = True
-    app.run()
+    app.run(port=2525)

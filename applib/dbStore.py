@@ -53,7 +53,7 @@ def add_sql(*args):
 def query_sql(num=None):
     # query recently {num} data from db
     if num:
-        strr = '''select * from accountingList limit {num};'''\
+        strr = '''select * from accountingList order by stuff_id desc limit {num};'''\
                .format(num=num)
     else:
         strr = '''select * from accountingList;'''

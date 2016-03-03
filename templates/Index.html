@@ -17,4 +17,10 @@
 
 <body>
   <h1>Index</h1>
+
+  {% block body %}
+
+    <li><a href="{{ url_for('accounting')}}"><h2>go to accounting page</h2></a>
+
+  {% endblock %}
 </body>
