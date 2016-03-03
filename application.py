@@ -39,7 +39,7 @@ def index():
 def accounting(num=10):
     #    num = 10
     form = _ac.SubmitRecordForm()
-    query_form = _ac.SubmitRecordForm()
+    query_form = _ac.QueryRecordForm()
     DBresult = list(do_sql(_db.query_sql(num)))
 
     if form.validate_on_submit():
@@ -50,13 +50,13 @@ def accounting(num=10):
         do_sql(_db.add_sql(newid, newName, newPrice))
 
         form.name.data, form.price.data = "", ""
-        print("fuck")
-        return redirect(url_for("accounting", num=num))
+#        print("fuck")
+        return redirect(url_for("accounting"))
 
     if query_form.validate_on_submit():
         showNum = list(
             do_sql("""select count(*) from accountingList;"""))[0][0]
-        print(showNum)
+#        print(showNum)
         return redirect(url_for("accounting", num=showNum))
 
 #    print(list(DBresult))
