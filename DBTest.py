@@ -1,10 +1,10 @@
+import sqlite3
 from applib import dbStore
 
 if __name__ == "__main__":
-    rr = dbStore.query_sql()
+    strr = dbStore.query_sql()
+    conn = sqlite3.connect(dbStore.dataDir)
+    rr = dbStore.do_sql(strr, conn)
 
-    dbStore.add_sql(6, "hahahah", 123)
-    print(list(rr))
-
-    rr = dbStore.query_sql(1)
-    print(list(rr))
+    for i in list(rr):
+        print(i)
