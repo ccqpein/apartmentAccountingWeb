@@ -72,5 +72,5 @@ def teardown_request(exception):
         g.db.close()
 
 if __name__ == '__main__':
-    app.debug = True
-    app.run(port=2525)
+    app.debug = False
+    app.run(host="0.0.0.0", port=2525)
