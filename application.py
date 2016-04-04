@@ -50,7 +50,7 @@ def accounting(num=10):
         do_sql(_db.add_sql(newid, newName, newPrice))
 
         form.name.data, form.price.data = "", ""
-#        print("fuck")
+#        print("f**k")
         return redirect(url_for("accounting"))
 
     if query_form.validate_on_submit():
