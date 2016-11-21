@@ -5,10 +5,10 @@ session_start();
 
 if (empty($_SESSION["temp"])) {
     $_SESSION["temp"] = array();
-    $user_data = filter_input(INPUT_POST,"user_data",
+    $temp = filter_input(INPUT_POST,"user_data",
                           FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
 }else{
-    $user_data = $_SESSION["user_data"];
+    $temp = $_SESSION["temp"];
 }
 
 require("./model/database.php");
