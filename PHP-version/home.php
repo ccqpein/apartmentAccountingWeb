@@ -1,14 +1,21 @@
-<?php include 'view/header.php'; ?>
+<?php include './view/header.php'; ?>
 
-<h1>Input the recipt</h1>
-<?php foreach ($products as $product) : ?>
-    <p> <?php echo $product['productName']; ?></p>
-<?php endforeach; ?>
+<h1>Accouting page</h1>
 
-<h1>Delete Message</h1>
-<p> <?php echo $delete_message; ?></p>
+<?php  ?>
 
-<h1>Insert Message</h1>
-<p> <?php echo $insert_message; ?></p>
 
-<?php include 'view/footer.php'; ?>
+<form action = "./index.php" method="post">
+    <input type="hidden" name="action" value="add"/>
+    
+    <label>Name</label>
+    <input type="text" name="this[name]"/><br>
+
+    <label>Price</label>
+    <input type="number" name="this[price]"/><br>
+    
+    <input type="submit" value="Add new entry"/>
+</form>
+
+
+<?php include './view/footer.php'; ?>
