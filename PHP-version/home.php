@@ -34,6 +34,11 @@ if (isset($tempArray) && !empty($tempArray)) {
 </form>
 
 <form action="./index.php" method="post">
+    <input type="submit" name="action" value="save"/>
+</form>
+
+<br>
+<form action="./index.php" method="post">
     <input type="submit" name="action" value="query"/>
 </form>
 

@@ -13,7 +13,30 @@ if ($CE != NULL){
     exit;
 }
 
-function add_new_entry(){};
+function add_new_entry(){
+    global $db;
+    $query = "insert into accounting
+(name, price, add_time)
+values
+(?,?,?)";
+    
+    $statement = $db->prepare($query);
+    $statement->bind_param('sds',
+                           $userdata["first_name"],
+                           $userdata["last_name"],
+                           $userdata["email"],
+    );
+    $success = $statement->execute();
+    
+    if ($success){
+        return 0;
+    }else{
+        $error_message = $db->error;
+        echo $error_message;
+    }
+    
+    $statement->close();
+};
 
 function query_by_data(){};
 
