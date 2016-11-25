@@ -40,6 +40,12 @@ case "pop last":
 case "query":
     include "./";
     break;
+case "save":
+    add_new_entry($tempArray);
+    $_SESSIONE  = array();
+    session_destroy();
+    include "./home.php"
+    break;
 }
 
 

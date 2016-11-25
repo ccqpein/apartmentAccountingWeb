@@ -13,18 +13,17 @@ if ($CE != NULL){
     exit;
 }
 
-function add_new_entry(){
+function add_new_entry($tempArray){
     global $db;
     $query = "insert into accounting
 (name, price, add_time)
 values
-(?,?,?)";
+(?,?,NOW())";
     
     $statement = $db->prepare($query);
     $statement->bind_param('sds',
-                           $userdata["first_name"],
-                           $userdata["last_name"],
-                           $userdata["email"],
+                           $tempArray["name"],
+                           $tempArray["price"],
     );
     $success = $statement->execute();
     
@@ -38,9 +37,53 @@ values
     $statement->close();
 };
 
-function query_by_data(){};
+function query_by_data($tempArray){
+    global $db;
+    $query = "select * 
+from accounting
+;"
+    
+    $statement = $db->prepare($query);
+    $statement->bind_param('sds',
+                           $tempArray["name"],
+                           $tempArray["price"],
+    );
+    $success = $statement->execute();
+    
+    if ($success){
+        return 0;
+    }else{
+        $error_message = $db->error;
+        echo $error_message;
+    }
+    
+    $statement->close();
 
-function query_by_count(){};
+};
+
+function query_by_count($tempArray){
+    global $db;
+    $query = "select * 
+from accounting
+LIMIT 10;"
+    
+    $statement = $db->prepare($query);
+    $statement->bind_param('sds',
+                           $tempArray["name"],
+                           $tempArray["price"],
+    );
+    $success = $statement->execute();
+    
+    if ($success){
+        return 0;
+    }else{
+        $error_message = $db->error;
+        echo $error_message;
+    }
+    
+    $statement->close();
+
+};
 
 
 
