@@ -37,54 +37,35 @@ values
     $statement->close();
 };
 
-function query_by_data($tempArray){
+function query_by_data(){
     global $db;
     $query = "select * 
-from accounting
-;"
+from accounting";
     
-    $statement = $db->prepare($query);
-    $statement->bind_param('sds',
-                           $tempArray["name"],
-                           $tempArray["price"],
-    );
-    $success = $statement->execute();
+    $result = $db->query($query);
     
-    if ($success){
-        return 0;
+    if ($result != false){
+        return $result;
     }else{
         $error_message = $db->error;
         echo $error_message;
     }
-    
-    $statement->close();
-
 };
 
-function query_by_count($tempArray){
+function query_by_count(){
     global $db;
     $query = "select * 
 from accounting
-LIMIT 10;"
+LIMIT 10";
     
-    $statement = $db->prepare($query);
-    $statement->bind_param('sds',
-                           $tempArray["name"],
-                           $tempArray["price"],
-    );
-    $success = $statement->execute();
+    $result = $db->query($query);
     
-    if ($success){
-        return 0;
+    if ($result != false){
+        return $result;
     }else{
         $error_message = $db->error;
         echo $error_message;
     }
-    
-    $statement->close();
-
 };
-
-
 
 ?>
