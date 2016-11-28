@@ -41,10 +41,13 @@ case "query":
     include "./";
     break;
 case "save":
-    add_new_entry($tempArray);
+    foreach ($tempArray as $thisTemp){
+        add_new_entry($thisTemp);
+    }
+    include "./view/succeed.php";
     $_SESSIONE  = array();
     session_destroy();
-    include "./home.php"
+    $tempArray = array();
     break;
 }
 

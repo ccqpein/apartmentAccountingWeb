@@ -13,7 +13,7 @@ if ($CE != NULL){
     exit;
 }
 
-function add_new_entry($tempArray){
+function add_new_entry($temp){
     global $db;
     $query = "insert into accounting
 (name, price, add_time)
@@ -21,9 +21,9 @@ values
 (?,?,NOW())";
     
     $statement = $db->prepare($query);
-    $statement->bind_param('sds',
-                           $tempArray["name"],
-                           $tempArray["price"],
+    $statement->bind_param('sd',
+                           $temp["name"],
+                           $temp["price"]
     );
     $success = $statement->execute();
     
