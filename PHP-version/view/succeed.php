@@ -5,7 +5,7 @@ echo "<ul>";
 foreach ($tempArray as $temp){
     echo "<li>";
     foreach($temp as $value)
-    echo "$value";
+        echo "$value";
     echo "</li>";
 }
 echo "</ul>";

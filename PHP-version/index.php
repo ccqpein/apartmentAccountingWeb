@@ -38,7 +38,7 @@ case "pop last":
     include "./home.php";
     break;
 case "query":
-    include "./";
+    include "./view/query.php";
     break;
 case "save":
     foreach ($tempArray as $thisTemp){

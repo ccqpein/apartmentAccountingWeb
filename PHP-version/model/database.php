@@ -35,7 +35,7 @@ values
     }
     
     $statement->close();
-};
+}
 
 function query_by_data(){
     global $db;
@@ -52,11 +52,18 @@ from accounting";
     }
 };
 
-function query_by_count(){
+function query_by_count($q_count = 10){
     global $db;
     $query = "select * 
 from accounting
-LIMIT 10";
+LIMIT ".$q_count;
+
+    //    $statement = $db->prepare($query);
+    //    $statement->bind_param('i',
+                            //                           $q_count
+                            //    );
+    //
+         //    $result = $statement->execute();    
     
     $result = $db->query($query);
     
