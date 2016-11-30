@@ -15,11 +15,13 @@ if (!isset($temp)) {
     $temp = array("name" => "", "price" => null);
 }
 
-if (!isset($_POST["action"])) {
+if (isset($_POST["action"])) {
+    $action = $_POST["action"];
+}else if (isset($_GET["action"])){
+    $action = $_GET["action"];    
+}else{
     $action = '';
     include "./home.php";
-}else{
-    $action = $_POST["action"];
 }
 
 require("./model/database.php");
@@ -38,6 +40,15 @@ case "pop last":
     include "./home.php";
     break;
 case "query":
+    if (isset($_GET["query_count"])){
+        $q_count = $_GET["query_count"];
+    }
+
+    if (isset($_GET["query_date"])){
+        $q_date = $_GET["query_date"];
+    }
+    //echo $q_date;
+    
     include "./view/query.php";
     break;
 case "save":

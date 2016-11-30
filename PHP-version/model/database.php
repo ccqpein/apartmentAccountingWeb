@@ -37,11 +37,13 @@ values
     $statement->close();
 }
 
-function query_by_data(){
+function query_by_date($q_date = ''){
     global $db;
     $query = "select * 
-from accounting";
-    
+from accounting
+where add_time <= DATE_ADD('".$q_date." 00:00:00', INTERVAL 1 DAY) 
+and add_time > '".$q_date." 00:00:00'";
+
     $result = $db->query($query);
     
     if ($result != false){
@@ -58,13 +60,6 @@ function query_by_count($q_count = 10){
 from accounting
 LIMIT ".$q_count;
 
-    //    $statement = $db->prepare($query);
-    //    $statement->bind_param('i',
-                            //                           $q_count
-                            //    );
-    //
-         //    $result = $statement->execute();    
-    
     $result = $db->query($query);
     
     if ($result != false){
