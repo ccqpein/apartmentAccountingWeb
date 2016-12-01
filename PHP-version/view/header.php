@@ -4,7 +4,10 @@
     <!-- the head section -->
     <head>
         <title>Apartment Accounting Page</title>
+        <link rel="stylesheet" type="text/css"
+              href="main.css" />
     </head>
 
-    <!-- the body section -->
     <body>
+      <div id = "page">
+      <div id = "main">

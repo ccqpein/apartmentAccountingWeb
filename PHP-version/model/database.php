@@ -54,10 +54,11 @@ and add_time > '".$q_date." 00:00:00'";
     }
 };
 
-function query_by_count($q_count = 10){
+function query_by_count($q_count = 5){
     global $db;
     $query = "select * 
 from accounting
+order by id DESC
 LIMIT ".$q_count;
 
     $result = $db->query($query);

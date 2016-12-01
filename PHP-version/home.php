@@ -16,7 +16,6 @@ if (isset($tempArray) && !empty($tempArray)) {
 }
 ?>
 
-
 <form action = "./index.php" method="post">
     <input type="hidden" name="action" value="add"/>
     
