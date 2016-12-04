@@ -6,7 +6,7 @@ if (isset($q_date) and !empty($q_date)){
     echo "<h2>There are ".$q_date." entries</h2>";
     $results = query_by_date($q_date);
 }else if (!isset($q_count) or empty($q_count)){
-    echo "<h2>There are last 10 entries</h2>";
+    echo "<h2>There are last 5 entries</h2>";
     $results = query_by_count();
 }else{
     echo "<h2>There are last ".$q_count." entries</h2>";
