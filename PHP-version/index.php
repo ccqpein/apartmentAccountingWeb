@@ -35,6 +35,10 @@ case "add":
     include "./home.php";
     break;
 case "pop last":
+    if (!isset($tempArray) or empty($tempArray)){
+        include "./home.php";
+        break;
+    }
     unset($tempArray[count($tempArray) - 1]);
     $_SESSION["temp"] = $tempArray;
     include "./home.php";
@@ -52,15 +56,17 @@ case "query":
     include "./view/query.php";
     break;
 case "save":
+    if (!isset($tempArray) or empty($tempArray)){
+        include "./home.php";
+        break;
+    }
     foreach ($tempArray as $thisTemp){
         add_new_entry($thisTemp);
     }
     include "./view/succeed.php";
-    $_SESSIONE  = array();
+    $_SESSION = array();
     session_destroy();
     $tempArray = array();
     break;
 }
-
-
 ?>
